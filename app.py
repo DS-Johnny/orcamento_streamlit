@@ -24,7 +24,7 @@ if st.button('Adicionar'):
     st.session_state['orcamento'].loc[df['Item / Serviço'] == item,'Quantidade'] = int(quantidade)
     st.session_state['orcamento'].loc[df['Item / Serviço'] == item,'Subtotal'] = st.session_state['orcamento'].loc[df['Item / Serviço'] == item,'Preço Máximo (R$)'] * st.session_state['orcamento'].loc[df['Item / Serviço'] == item,'Quantidade']
 
-st.dataframe(st.session_state['orcamento'])
+st.dataframe(st.session_state['orcamento'][st.session_state['orcamento']['Quantidade']>0])
 
 st.markdown('---')
 st.markdown(f"# Total: R${st.session_state['orcamento']['Subtotal'].sum()}")
